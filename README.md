@@ -36,8 +36,10 @@ to use another port number use the following command
    PORT=9002 && npm run dev
    ```
 2. For Windows users:
-   `bash set PORT=9002 && npm run dev `
-   or
+   ```bash 
+   set PORT=9002 && npm run dev 
+   ```
+or
 
 ```bash
 yarn dev -p <port_number>

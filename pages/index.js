@@ -7,14 +7,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Header />
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <LeftPanel />
-        </div>
-        <div className={styles.right}>
-          <RightPanel />
-        </div>
-      </div>
+      <div className={styles.container}></div>
     </div>
   );
 }

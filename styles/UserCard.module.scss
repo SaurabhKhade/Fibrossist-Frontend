@@ -1,0 +1,53 @@
+.cardContainer {
+  min-width: 320px;
+  max-width: 600px;
+  height: auto;
+  box-shadow: 0px -10px #37c9d0;
+  border-radius: 4px;
+}
+
+.header {
+  background-image: url("../public/assets/bg-pattern-card.svg");
+  background-position: 0px 0px;
+  background-repeat: repeat;
+  background-size: contain;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.boldText {
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 10px 20px 0px 20px;
+}
+
+.normalText {
+  font-weight: normal;
+  font-size: 0.95rem;
+  color: hsl(0, 0%, 50%);
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.smallerText {
+  font-weight: normal;
+  font-size: 0.7rem;
+  color: hsl(0, 0%, 50%);
+  text-align: center;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+  line-height: 5px;
+}
+
+.socialContainer {
+  display: flex;
+  border-top: solid rgb(206, 206, 206) 1px;
+  text-align: center;
+}
+
+.data {
+  flex: 1;
+}

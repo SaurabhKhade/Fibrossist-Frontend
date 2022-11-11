@@ -13,8 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import { useRouter } from "next/router";
+import UserCard from "./UserCard";
 
-const pages = ["Test", "History"];
+const pages = ["Home", "Test", "History", "Contact US"];
 const settings = ["Profile", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -42,22 +43,22 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MedicalServicesIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
+              fontFamily: "'Exo', sans-serif",
+              fontWeight: 900,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -114,8 +115,8 @@ const ResponsiveAppBar = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
+              fontFamily: "'Exo', sans-serif",
+              fontWeight: 900,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -139,12 +140,37 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt="Malhar Dhaygude"
+                  variant="rounded"
+                  alt="Saurabh Khade"
                   src="/static/images/avatar/2.jpg"
+                  sx={{
+                    backgroundColor: "#37c9d0",
+                    border: "2px solid #fff",
+                    width: 45,
+                    height: 45,
+                  }}
                 />
               </IconButton>
             </Tooltip>
             <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <UserCard />
+            </Menu>
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -165,7 +191,7 @@ const ResponsiveAppBar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

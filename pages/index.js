@@ -7,7 +7,10 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Header />
-      <div className={styles.container}></div>
+      <div className={styles.container}>
+        <LeftPanel />
+        <RightPanel />
+      </div>
     </div>
   );
 }

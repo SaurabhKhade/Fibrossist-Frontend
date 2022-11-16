@@ -3,24 +3,19 @@ import Avatar from "@mui/material/Avatar";
 
 export default function LeftPanel() {
   return (
-    <>
-      <div className={styles.avatar}>
-        <Avatar
-          alt="Remy Sharp"
-          style={{ width: "150px", height: "150px" }}
-          src="/static/images/avatar/1.jpg"
-        />
+    <div className={styles.panel}>
+      {/* <div className={styles.box}>
+        <p>Dashboard</p>
+        <p>Get all insights about your previous tests.</p>
+      </div> */}
+      <div className={styles.box}>
+        <p>What is Fibrosis?</p>
+        <p>Brief information about Fibrosis, its types and its symptoms.</p>
       </div>
-      <div className={styles.details}>
-        <p>Name</p>
-        <p>: Sauabh Khade</p>
-        <p>Age</p>
-        <p>: 21</p>
-        <p>Gender</p>
-        <p>: Male</p>
-        <p>Tests Conducted</p>
-        <p>: 0</p>
+      <div className={styles.box}>
+        <p>How to use?</p>
+        <p>Steps to use the website and its features.</p>
       </div>
-    </>
+    </div>
   );
 }

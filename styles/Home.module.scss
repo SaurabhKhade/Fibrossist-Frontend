@@ -2,11 +2,12 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  // height: 100%;
 }
 
 .container {
   display: flex;
-  height: 100%;
+  height: calc(100% - 70px);
   //   border: 2px solid rgb(187, 0, 72);
 }
 

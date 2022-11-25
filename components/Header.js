@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import UserCard from "./UserCard";
 
 const pages = ["Home", "Test", "History", "Contact US"];
-// const settings = ["Profile", "Logout"];
+const settings = ["Profile", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import styles from "/styles/UserCard.module.scss";
+import styles from "../styles/UserCard.module.scss";
 
 export default function UserCard() {
   const data = {

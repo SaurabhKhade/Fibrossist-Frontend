@@ -1,5 +1,5 @@
 import WhatIsFibrosis from "./WhatIsFibrosis";
-import styles from "/styles/RightPanel.module.scss";
+import styles from "../styles/RightPanel.module.scss";
 
 export default function RightPanel() {
   return (

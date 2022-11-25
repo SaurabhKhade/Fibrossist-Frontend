@@ -1,4 +1,4 @@
-import styles from "/styles/LeftPanel.module.scss";
+import styles from "../styles/LeftPanel.module.scss";
 import Avatar from "@mui/material/Avatar";
 
 export default function LeftPanel() {

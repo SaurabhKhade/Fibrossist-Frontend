@@ -6,11 +6,13 @@ export default function PageNotFound() {
   return (
     <>
       <Head>
+        {/*eslint-disable-next-line @next/next/no-css-tags*/}
         <link
           rel="stylesheet"
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
         />
+        {/*eslint-disable-next-line @next/next/no-css-tags*/}
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
       </Head>
       <div id="board" className="container">

@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import styles from "../styles/Home.module.scss";
-import LeftPanel from "../components/LeftPanel";
-import RightPanel from "../components/RightPanel";
+import Header from "/components/Header";
+import styles from "/styles/Home.module.scss";
+import LeftPanel from "/components/LeftPanel";
+import RightPanel from "/components/RightPanel";
 
 export default function Home() {
   return (

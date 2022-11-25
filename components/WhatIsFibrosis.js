@@ -1,4 +1,4 @@
-import styles from "../styles/RightPanel.module.scss";
+import styles from "/styles/RightPanel.module.scss";
 import Image from "next/image";
 
 export default function WhatIsFibrosis() {

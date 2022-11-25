@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import UserCard from "./UserCard";
 
 const pages = ["Home", "Test", "History", "Contact US"];
-const settings = ["Profile", "Logout"];
+// const settings = ["Profile", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -152,7 +152,7 @@ const ResponsiveAppBar = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   variant="rounded"
-                  alt="Saurabh Khade"
+                  alt="Babaji Patil"
                   src="/static/images/avatar/2.jpg"
                   sx={{
                     backgroundColor: "#37c9d0",

@@ -1,87 +1,67 @@
-import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Validate from "../functions/validator";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import IconButton from "@mui/material/IconButton";
-import Collapse from "@mui/material/Collapse";
-import CloseIcon from "@mui/icons-material/Close";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { useState, useRef } from "react";
+import axios from "axios";
+
+import Validate from "../functions/validator";
+import Copyright from "../components/signup/Copyright";
+import Alert from "../components/signup/Alert";
+import TextField from "../components/signup/TextField";
+import Select from "../components/signup/Select";
 
 const theme = createTheme();
 
 export default function SignUp() {
   const [errorOpen, setErrorOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const timeoutID = useRef(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = new FormData(event.currentTarget);
     try {
-      console.log({
-        name: Validate.name(data.get("name"), undefined),
-        surname: Validate.name(data.get("surname"), "Surname"),
-        age: Validate.age(data.get("age")),
-        email: Validate.email(data.get("email")),
-        password: Validate.password(data.get("password")),
+      const data = {
+        name: Validate.name(form.get("name")),
+        surname: Validate.name(form.get("surname"), "Surname"),
+        age: Validate.age(form.get("age")),
+        email: Validate.email(form.get("email")),
+        password: Validate.password(form.get("password")),
         confirmPassword: Validate.match(
-          data.get("password"),
-          data.get("confirm-password")
+          form.get("password"),
+          form.get("confirm-password")
         ),
-        gender: data.get("gender"),
-      });
+        gender: form.get("gender"),
+      };
+
+      try {
+        const response = await axios.post("http://localhost:5000/signup", data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
     } catch (e) {
       setErrorMessage(e);
       setErrorOpen(true);
+      clearTimeout(timeoutID.current);
+      timeoutID.current = setTimeout(() => {
+        setErrorOpen(false);
+      }, 3000);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
-        <Collapse in={errorOpen}>
-          <Alert
-            severity="error"
-            sx={{ position: "absolute", left: "50px", top: "50px" }}
-            onClose={() => {
-              setErrorOpen(false);
-            }}
-          >
-            <AlertTitle>Error</AlertTitle>
-            {errorMessage}
-          </Alert>
-        </Collapse>
+        <Alert open={errorOpen} message={errorMessage} setOpen={setErrorOpen} />
         <CssBaseline />
         <Box
           sx={{
@@ -99,86 +79,23 @@ export default function SignUp() {
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="surname"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="age"
-                  label="Age"
-                  name="age"
-                  inputProps={{ inputMode: "numeric", pattern: "[0-9]+" }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="gender-label">Gender</InputLabel>
-                  <Select
-                    name="gender"
-                    labelId="gender-label"
-                    id="gender"
-                    defaultValue=""
-                    label="Gender"
-                    required
-                  >
-                    <MenuItem value="M">Male</MenuItem>
-                    <MenuItem value="F">Female</MenuItem>
-                    <MenuItem value="O">Other</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="confirm-password"
-                  label="Confirm Password"
-                  type="password"
-                  id="confirm-password"
-                  autoComplete="new-password"
-                />
-              </Grid>
+              <TextField label="First Name" id="given-name" sm />
+              <TextField label="Last Name" id="family-name" sm />
+              <TextField
+                label="Age"
+                id="age"
+                inputProps={{ inputMode: "numeric", pattern: "[0-9]+" }}
+                sm
+              />
+              <Select />
+              <TextField label="Email Address" id="email" />
+              <TextField label="Password" id="new-password" passwordType />
+              <TextField
+                label="Confirm Password"
+                id="new-password"
+                changeId
+                passwordType
+              />
             </Grid>
             <Button
               type="submit"
@@ -190,7 +107,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

@@ -4,7 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-export default function SelectComponent() {
+export default function SelectComponent({ id }) {
   return (
     <Grid item xs={12} sm={6}>
       <FormControl fullWidth>
@@ -12,7 +12,7 @@ export default function SelectComponent() {
         <Select
           name="gender"
           labelId="gender-label"
-          id="gender"
+          id={id}
           defaultValue=""
           label="Gender"
           required

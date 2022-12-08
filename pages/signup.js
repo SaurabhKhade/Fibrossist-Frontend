@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { useState, useRef } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 
 import Validate from "../functions/validator";
@@ -17,6 +18,7 @@ import Copyright from "../components/signup/Copyright";
 import Alert from "../components/signup/Alert";
 import TextField from "../components/signup/TextField";
 import Select from "../components/signup/Select";
+import SWAL from "../components/signup/SWAL";
 
 const theme = createTheme();
 
@@ -24,29 +26,38 @@ export default function SignUp() {
   const [errorOpen, setErrorOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const timeoutID = useRef(null);
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     try {
       const data = {
-        name: Validate.name(form.get("name")),
-        surname: Validate.name(form.get("surname"), "Surname"),
+        name: Validate.name(form.get("given-name")),
+        surname: Validate.name(form.get("family-name"), "Surname"),
         age: Validate.age(form.get("age")),
         email: Validate.email(form.get("email")),
-        password: Validate.password(form.get("password")),
+        password: Validate.password(form.get("new-password")),
         confirmPassword: Validate.match(
-          form.get("password"),
-          form.get("confirm-password")
+          form.get("new-password"),
+          form.get("new-password-2")
         ),
         gender: form.get("gender"),
       };
-
+      // console.log(data);
       try {
-        const response = await axios.post("http://localhost:5000/signup", data);
-        console.log(response);
+        const response = await axios({
+          method: "post",
+          url: "http://localhost:5000/signup",
+          data,
+        });
+        // console.log(response.data.message);
+        SWAL("Success", response.data.message, "success", () => {
+          router.push("/login");
+        });
       } catch (error) {
-        console.log(error);
+        SWAL("Error", error.response.data.message, "error");
+        // console.log(error.response.data);
       }
     } catch (e) {
       setErrorMessage(e);
@@ -87,7 +98,7 @@ export default function SignUp() {
                 inputProps={{ inputMode: "numeric", pattern: "[0-9]+" }}
                 sm
               />
-              <Select />
+              <Select id="gender" />
               <TextField label="Email Address" id="email" />
               <TextField label="Password" id="new-password" passwordType />
               <TextField

@@ -20,6 +20,7 @@ class Validator {
     if (this.password_re.test(value)) {
       return value;
     }
+    console.log(value);
     throw "Weak Password! Must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character";
   }
   match(val1, val2) {

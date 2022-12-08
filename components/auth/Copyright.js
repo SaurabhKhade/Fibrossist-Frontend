@@ -11,7 +11,7 @@ export default function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="/">
-        Your Website
+        Fibrossist System
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

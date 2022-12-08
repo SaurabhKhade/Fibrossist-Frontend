@@ -12,6 +12,7 @@ export default function TextFieldComponent({
   return (
     <Grid item xs={12} sm={sm ? 6 : 12}>
       <TextField
+        margin="normal"
         autoComplete={id}
         name={changeId ? `${id}-2` : id}
         required

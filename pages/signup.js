@@ -14,11 +14,11 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 import Validate from "../functions/validator";
-import Copyright from "../components/signup/Copyright";
-import Alert from "../components/signup/Alert";
-import TextField from "../components/signup/TextField";
-import Select from "../components/signup/Select";
-import SWAL from "../components/signup/SWAL";
+import Copyright from "../components/auth/Copyright";
+import Alert from "../components/auth/Alert";
+import TextField from "../components/auth/TextField";
+import Select from "../components/auth/Select";
+import SWAL from "../components/auth/SWAL";
 
 const theme = createTheme();
 

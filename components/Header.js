@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import { useRouter } from "next/router";
-import UserCard from "./UserCard";
+import UserCard from "./Home/UserCard";
 
 const pages = ["Home", "Test", "History", "Contact US"];
 const settings = ["Profile", "Logout"];

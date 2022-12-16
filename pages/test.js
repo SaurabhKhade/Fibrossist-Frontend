@@ -1,7 +1,9 @@
+import Dropzone from "../components/dropzone/Dropzone";
+
 export default function Test() {
   return (
     <div>
-      <h1>Test</h1>
+      <Dropzone />
     </div>
   );
 }

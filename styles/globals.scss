@@ -31,3 +31,23 @@ a {
     tap-highlight-color: transparent;
   }
 }
+
+.dropContainer {
+  border: 1px solid gray;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  padding: 30px;
+  background-color: hsl(0, 0%, 98%);
+  border-radius: 10px;
+}
+
+.dropBox {
+  height: 100%;
+  width: 100%;
+  border: 1px dashed black;
+  background-color: hsl(0, 0%, 95%);
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+}

@@ -2,7 +2,7 @@ import "../styles/globals.scss";
 
 import Header from "../components/Header";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
         router.pathname !== "/signup" &&
         router.pathname !== "/recover" && <Header />}
       <Component {...pageProps} />
+      <Footer />
     </>
   );
 }

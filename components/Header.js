@@ -26,7 +26,6 @@ const LoginButton = styled(Button)(() => ({
   filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
   width: "100px",
   height: "40px",
-  fontFamily: "Sans-Serif",
   "&:hover": {
     backgroundColor: "#FCFFE7",
   },
@@ -36,11 +35,10 @@ const styleTextWithIcon = {
   color: "FEFEFE",
   margin: 0,
   padding: 0,
-  fontFamily: "sans-serif",
-  fontWeight: 600,
   fontSize: "20px",
   lineHeight: "30px",
   marginLeft: "10px",
+  fontWeight: 500,
 };
 
 const pages = [
@@ -108,7 +106,7 @@ function UserAvatar({ handleOpenUserMenu, anchorElUser, handleCloseUserMenu }) {
     <>
       {router.pathname == "/" ? (
         <Link href="/login">
-          <LoginButton>Login</LoginButton>
+          <LoginButton className="poppins">Login</LoginButton>
         </Link>
       ) : (
         <Card
@@ -141,7 +139,9 @@ function Card({ handleOpenUserMenu, anchorElUser, handleCloseUserMenu }) {
               />
             </IconButton>
           </Tooltip>
-          <p style={styleTextWithIcon}>Hi Babaji Patil</p>
+          <p className="poppins" style={styleTextWithIcon}>
+            Hi Babaji Patil
+          </p>
         </Box>
         <Menu
           sx={{ mt: "45px" }}
@@ -184,12 +184,12 @@ function PageListSmallScreen({
         sx={{
           mr: 2,
           display: { xs: "none", md: "flex" },
-          fontFamily: "'Exo', sans-serif",
-          fontWeight: 900,
+          fontWeight: 600,
           letterSpacing: ".3rem",
           color: "inherit",
           textDecoration: "none",
         }}
+        className="poppins"
       >
         Fibrossist
       </Typography>
@@ -226,7 +226,9 @@ function PageListSmallScreen({
           {pages.map((page) => (
             <MenuItem key={page}>
               <Link href={page.path}>
-                <Typography textAlign="center">{page.name}</Typography>
+                <Typography textAlign="center" className="poppins">
+                  {page.name}
+                </Typography>
               </Link>
             </MenuItem>
           ))}
@@ -236,7 +238,7 @@ function PageListSmallScreen({
   );
 }
 
-function PageList({ handleCloseNavMenu }) {
+function PageList() {
   const router = useRouter();
   return (
     <>
@@ -253,11 +255,12 @@ function PageList({ handleCloseNavMenu }) {
           display: { xs: "flex", md: "none" },
           flexGrow: 1,
           fontFamily: "'Exo', sans-serif",
-          fontWeight: 900,
+          fontWeight: 600,
           letterSpacing: ".3rem",
           color: "inherit",
           textDecoration: "none",
         }}
+        className="poppins"
       >
         Fibrossist
       </Typography>
@@ -271,14 +274,14 @@ function PageList({ handleCloseNavMenu }) {
               justifyContent: "flex-end",
               paddingRight: "2rem",
               gap: "1rem",
-              fontWeight: 600,
-              // border: "1px solid red",
             },
           }}
         >
           {pages.map((page) => (
             <Link key={page} href={page.path}>
-              {page.name}
+              <Typography textAlign="center" className="poppins">
+                {page.name}
+              </Typography>
             </Link>
           ))}
         </Box>

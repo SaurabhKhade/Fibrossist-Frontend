@@ -1,3 +1,6 @@
+# Potential Design
+[Figma link](https://www.figma.com/file/aCvBbbvkIicpL4AqTGe5nu/Fibrosis?t=wvvwBmai2xO9hZLI-1)
+
 # Follow the instructions to setup the project
 
 ## Installing Dependencies

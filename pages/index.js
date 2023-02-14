@@ -1,10 +1,29 @@
-import Header from "../components/Header";
 import styles from "../styles/Home.module.scss";
+import FirstView from "../components/landingPage/FirstView";
+import LaterView from "../components/landingPage/LaterView";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>{/* write your code here */}</div>
+    <div className={styles.container}>
+      <FirstView />
+      {LaterViewData.map((item, i) => (
+        <LaterView {...item} key={i} />
+      ))}
     </div>
   );
 }
+
+const LaterViewData = [
+  {
+    className: styles.secondView,
+    imgPath: "/assets/misc/secondView.png",
+    title: "What is Fibrosis",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+  },
+  {
+    className: styles.thirdView,
+    imgPath: "/assets/misc/thirdView.png",
+    title: "What do you expect from our platform?",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+  },
+];

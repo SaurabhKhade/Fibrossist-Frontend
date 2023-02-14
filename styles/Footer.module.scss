@@ -1,8 +1,9 @@
 @import "./fonts";
+@import "./colors";
 
 .footer {
   margin-top: auto;
-  background-color: #4b56d2;
+  background-color: $primary;
   //   display: none;
   padding: 4rem 5rem 3rem;
   display: flex;
@@ -15,7 +16,7 @@
   hr {
     border: none;
     // border-style: solid;
-    border-top: 1px solid white;
+    border-top: 1px solid $white;
   }
 }
 
@@ -34,7 +35,7 @@
   }
 
   p {
-    color: #fff;
+    color: $white;
     font-size: 24px;
     margin: 0;
     line-height: 29px;
@@ -50,7 +51,7 @@
   gap: 3rem;
 
   p {
-    color: #fff;
+    color: $white;
     margin: 0;
     line-height: 18.15px;
     font-size: 15px;
@@ -80,7 +81,7 @@
 .right {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: $white;
   .title {
     font-size: 24px;
     font-weight: 600;

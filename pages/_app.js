@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }) {
       {router.pathname !== "/login" &&
         router.pathname !== "/signup" &&
         router.pathname !== "/recover" && <Header />}
-      <Component {...pageProps} />
+      <div className="page">
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </>
   );

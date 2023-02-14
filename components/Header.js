@@ -74,16 +74,14 @@ export default function NavigationBar() {
 
   return (
     <AppBar position="sticky">
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
-          {
-            <PageListSmallScreen
-              handleOpenNavMenu={handleOpenNavMenu}
-              anchorElNav={anchorElNav}
-              handleCloseNavMenu={handleCloseNavMenu}
-            />
-          }
-          {<PageList handleCloseNavMenu={handleCloseNavMenu} />}
+          <PageListSmallScreen
+            handleOpenNavMenu={handleOpenNavMenu}
+            anchorElNav={anchorElNav}
+            handleCloseNavMenu={handleCloseNavMenu}
+          />
+          <PageList handleCloseNavMenu={handleCloseNavMenu} />
 
           <Box sx={{ marginLeft: "auto" }}>
             {

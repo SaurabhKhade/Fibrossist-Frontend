@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.scss";
 import FirstView from "../components/landingPage/FirstView";
 import LaterView from "../components/landingPage/LaterView";
+import Reviews from "../components/landingPage/Reviews";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       {LaterViewData.map((item, i) => (
         <LaterView {...item} key={i} />
       ))}
+      <Reviews />
     </div>
   );
 }
@@ -17,7 +19,7 @@ const LaterViewData = [
   {
     className: styles.secondView,
     imgPath: "/assets/misc/secondView.png",
-    title: "What is Fibrosis",
+    title: "What is Fibrosis?",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
   },
   {

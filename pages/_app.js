@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   // useEffect(()=>{
@@ -16,6 +17,8 @@ function MyApp({ Component, pageProps }) {
       <div className="page">
         <Component {...pageProps} />
       </div>
+
+   
       <Footer />
     </>
   );

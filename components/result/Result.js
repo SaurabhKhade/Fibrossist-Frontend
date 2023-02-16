@@ -10,74 +10,70 @@ import { dividerClasses } from "@mui/material";
 import Button, { ButtonProps } from "@mui/material/Button";
 import styles from "../../styles/result.module.scss";
 import { styled } from "@mui/material/styles";
-import DateRangeIcon from '@mui/icons-material/DateRange';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const result = () => {
   return (
     <div className={styles.container}>
-      <Card className={styles.card} >
-        <CardContent >
-        <Typography gutterBottom variant="h6" component="div" color="#002D62">
-              Report
-            </Typography>
-          <hr/>
+      <Card className={styles.card}>
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            className={styles.darkBlue}
+          >
+            Report
+          </Typography>
+          <hr />
         </CardContent>
         <CardContent className={styles.report}>
-          <CardMedia className={styles.cardMedia}
-            sx={{ width: 200, height: 200 }}
+          <CardMedia
+            className={styles.cardMedia}
+            sx={{ width: 120, height: 200 }}
             image="/assets/result/resultPageImage.png"
             title="green iguana"
           />
           <CardContent className={styles.cardContent}>
-          <div className={styles.middleContent}>
-            <Typography gutterBottom variant="h5" component="div" color="#002D62">
-              Fibrossis Detection
-            </Typography>
-          </div>
-          <div className={styles.middleContent}>
-          <DateRangeIcon/>
-            <Typography variant="body2" color="text.secondary">
-              23-12-2022 to 23-12-2023
-             
-            </Typography>
-          </div>
-          <div className={styles.middleContent}>
-          <AccessTimeIcon/>
-            <Typography variant="body2" color="text.secondary">
-              10:00 am to 10.30 am 
-             
-            </Typography>
-          </div>
+            <div className={styles.middleContent}>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                className={styles.darkBlue}
+              >
+                Fibrossis Detection
+              </Typography>
+            </div>
+            <div className={styles.middleContent}>
+              <DateRangeIcon />
+              <Typography variant="body2" color="text.secondary">
+                23-12-2022 to 23-12-2023
+              </Typography>
+            </div>
+            <div className={styles.middleContent}>
+              <AccessTimeIcon />
+              <Typography variant="body2" color="text.secondary">
+                10:00 am to 10.30 am
+              </Typography>
+            </div>
           </CardContent>
           <CardContent>
-            
-          <CardActions className={styles.cardAction}>
-            {/* <Button size="small">Save</Button> */}
-            <SaveButton variant="contained">Save</SaveButton>
-           
-          </CardActions>
+            <CardActions className={styles.cardAction}>
+              {/* <Button size="small">Save</Button> */}
+              <Button variant="contained">Close</Button>
+            </CardActions>
           </CardContent>
         </CardContent>
-        <hr/>
+        <hr style={{ width: "97%" }} />
         <CardContent className={styles.resultSection}>
-        <Typography variant="h4"  color="text.secondary">
-             You are tested positive.
-             
-            </Typography>
+          <Typography variant="h4" className={styles.darkBlue}>
+            You are tested positive.
+          </Typography>
         </CardContent>
       </Card>
     </div>
   );
 };
-
-const SaveButton = styled(Button)(() => ({
-  width: "97px",
-  height: "23px",
-  fontSize: "10px",
-  backgroundColor:"#4B56D2",
-  color:"white",
-}));
-
-
 export default result;

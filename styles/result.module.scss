@@ -1,37 +1,44 @@
-.container{
-    width: 100%;
-    margin: auto auto;
-    display: flex;
-    justify-content: center;
-    // background:blueviolet;
-}
-.card{
-    width: 90%;
+@import "./colors";
+@import "./fonts";
 
-}
-.report{
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto auto;
   display: flex;
-  
+  justify-content: center;
+  // background:blueviolet;
 }
-.middleContent{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.card {
+  width: 90%;
 }
-.cardMedia{
-    flex: 40%;
+.report {
+  display: flex;
+}
+.middleContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cardMedia {
+  flex: 40%;
 }
 
-.cardContent{
-    flex:50%;
+.cardContent {
+  flex: 50%;
 }
 
-.cardAction{
-    flex: 10%;
+.cardAction {
+  flex: 10%;
 }
 
-.resultSection{
-    display: flex;
-    justify-content: center;
-    font-size: 300px;
+.resultSection {
+  display: flex;
+  justify-content: center;
+  font-size: 300px;
+}
+
+.darkBlue {
+  color: $dark_primary;
+  font-family: $poppins;
 }

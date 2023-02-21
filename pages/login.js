@@ -42,7 +42,7 @@ export default function SignIn() {
         } else {
           setCookie("token", response.data.token, 1);
         }
-        router.push("/");
+        router.push("/dashboard");
       });
     } catch (error) {
       SWAL("Error", error.response.data.message, "error");

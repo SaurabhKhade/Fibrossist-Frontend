@@ -2,7 +2,12 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-export default function RecoveryEmail({ email, setEmail, handleSubmit }) {
+export default function RecoveryEmail({
+  email,
+  setEmail,
+  handleSubmit,
+  disabled,
+}) {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
       <TextField
@@ -17,7 +22,13 @@ export default function RecoveryEmail({ email, setEmail, handleSubmit }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 1, mb: 2 }}
+        disabled={disabled}
+      >
         Next
       </Button>
     </Box>

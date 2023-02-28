@@ -25,11 +25,13 @@ const theme = createTheme();
 export default function SignUp() {
   const [errorOpen, setErrorOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [disabled, setDisabled] = useState(false);
   const timeoutID = useRef(null);
   const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setDisabled(true);
     const form = new FormData(event.currentTarget);
     try {
       const data = {
@@ -66,6 +68,8 @@ export default function SignUp() {
       timeoutID.current = setTimeout(() => {
         setErrorOpen(false);
       }, 3000);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -113,6 +117,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
             >
               Sign Up
             </Button>

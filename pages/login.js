@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -22,6 +22,7 @@ const theme = createTheme();
 
 export default function SignIn() {
   const router = useRouter();
+  const [disabled, setDisabled] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -30,6 +31,7 @@ export default function SignIn() {
       email: form.get("email"),
       password: form.get("password"),
     };
+    setDisabled(true);
     try {
       const response = await axios({
         method: "post",
@@ -47,6 +49,8 @@ export default function SignIn() {
     } catch (error) {
       SWAL("Error", error.response.data.message, "error");
       //   console.log(error);
+    } finally {
+      setDisabled(false);
     }
   };
 
@@ -105,6 +109,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
             >
               Sign In
             </Button>

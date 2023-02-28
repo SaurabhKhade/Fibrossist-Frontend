@@ -25,11 +25,14 @@ const theme = createTheme();
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [emailForm, setEmailForm] = useState(true);
+  const [emailDisabled, setEmailDisabled] = useState(false);
+  const [passwordDisabled, setPasswordDisabled] = useState(false);
 
   const router = useRouter();
 
   async function validateEmail(event) {
     event.preventDefault();
+    setEmailDisabled(true);
     try {
       const response = await axios({
         method: "post",
@@ -47,11 +50,14 @@ export default function SignIn() {
       );
     } catch (error) {
       SWAL("Error", error.response.data.message, "error");
+    } finally {
+      setEmailDisabled(false);
     }
   }
 
   async function finalSubmit(data) {
     console.log({ email, ...data });
+    setPasswordDisabled(true);
     try {
       const response = await axios({
         method: "post",
@@ -68,6 +74,8 @@ export default function SignIn() {
       );
     } catch (error) {
       SWAL("Error", error.response.data.message, "error");
+    } finally {
+      setPasswordDisabled(false);
     }
   }
 
@@ -94,9 +102,10 @@ export default function SignIn() {
               email={email}
               setEmail={setEmail}
               handleSubmit={validateEmail}
+              disabled={emailDisabled}
             />
           ) : (
-            <Password handleSubmit={finalSubmit} />
+            <Password handleSubmit={finalSubmit} disabled={passwordDisabled} />
           )}
           <Grid container>
             <Link href="/login" variant="body2">

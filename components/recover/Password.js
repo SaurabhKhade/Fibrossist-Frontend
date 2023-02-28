@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Validate from "../../functions/validator";
 import SWAL from "../auth/SWAL";
 
-export default function RecoveryEmail({ handleSubmit }) {
+export default function RecoveryEmail({ handleSubmit, disabled }) {
   function onSubmit(event) {
     try {
       event.preventDefault();
@@ -56,7 +56,13 @@ export default function RecoveryEmail({ handleSubmit }) {
         name="confirm-password"
         autoComplete="new-password"
       />
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 1, mb: 2 }}
+        disabled={disabled}
+      >
         Submit
       </Button>
     </Box>

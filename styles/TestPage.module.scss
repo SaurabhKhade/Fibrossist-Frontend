@@ -1,0 +1,23 @@
+@import "./colors";
+.container{
+    width: 100%;
+    margin: auto auto;
+    // display: flex;
+    // justify-content: center;
+
+}
+
+.innerContainer{
+    border: 12px solid blue;
+}
+.docImage{
+    border: 12px solid $primary;
+}
+
+.row1{
+    display: flex;
+    justify-content: center;
+}
+.row2{
+    display: flex;
+}

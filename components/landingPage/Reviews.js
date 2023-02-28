@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../../styles/Home.module.scss";
 import Review from "./Review";
+import Slider from "./Slider";
 
 export default function Reviews() {
   const [loadedPair, setLoadedPair] = useState(1);
@@ -18,6 +19,11 @@ export default function Reviews() {
       <div className={styles.wrapper}>
         <div className={styles.box}>{getReviews()}</div>
       </div>
+      <Slider
+        page={loadedPair}
+        setPage={setLoadedPair}
+        count={data.length / 2}
+      />
     </div>
   );
 }

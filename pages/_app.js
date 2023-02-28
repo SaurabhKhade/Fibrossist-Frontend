@@ -1,9 +1,8 @@
 import "../styles/globals.scss";
 
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
-
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </div>
 
-   
       <Footer />
     </>
   );

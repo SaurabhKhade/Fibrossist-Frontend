@@ -56,12 +56,16 @@ export default function NavigationBar() {
       /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
     ) || [, null])[1];
     async function apiCall() {
-      let { data } = await axios.get("http://localhost:5000/details", {
-        headers: {
-          token,
-        },
-      });
-      setData(data);
+      try {
+        let { data } = await axios.get("http://localhost:5000/details", {
+          headers: {
+            token,
+          },
+        });
+        setData(data);
+      } catch {
+        router.replace("/login");
+      }
     }
 
     if (router.pathname !== "/") {
@@ -71,7 +75,7 @@ export default function NavigationBar() {
         apiCall();
       }
     }
-  }, [router.pathname]);
+  }, [router]);
 
   return (
     <AppBar position="sticky">

@@ -8,6 +8,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
@@ -28,16 +32,19 @@ export default function SignUp() {
   const [disabled, setDisabled] = useState(false);
   const timeoutID = useRef(null);
   const router = useRouter();
+  const [birthDate, setBirthDate] = useState(dayjs(Date.now()));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // return console.log(birthDate.isAfter(dayjs("1920-01-01")));
     setDisabled(true);
     const form = new FormData(event.currentTarget);
     try {
       const data = {
         name: Validate.name(form.get("given-name")),
         surname: Validate.name(form.get("family-name"), "Surname"),
-        age: Validate.age(form.get("age")),
+        // age: Validate.age(form.get("age")),
+        birthDate: Validate.birthDate(birthDate),
         email: Validate.email(form.get("email")),
         password: Validate.password(form.get("new-password")),
         confirmPassword: Validate.match(
@@ -93,16 +100,33 @@ export default function SignUp() {
             Sign up
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ alignItems: "center" }}>
               <TextField label="First Name" id="given-name" sm />
               <TextField label="Last Name" id="family-name" sm />
-              <TextField
+              {/* <TextField
                 label="Age"
                 id="age"
                 inputProps={{ inputMode: "numeric", pattern: "[0-9]+" }}
                 sm
-              />
-              <Select id="gender" />
+              /> */}
+              <Grid item xs={12} sm={6}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    disableFuture
+                    label="Birth Date"
+                    openTo="year"
+                    views={["year", "month", "day"]}
+                    value={birthDate}
+                    onChange={(newValue) => {
+                      setBirthDate(newValue);
+                    }}
+                    minDate={dayjs("1920-01-01")}
+                    maxDate={dayjs(Date.now())}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+              </Grid>
+              <Select id="gender" sm />
               <TextField label="Email Address" id="email" />
               <TextField label="Password" id="new-password" passwordType />
               <TextField

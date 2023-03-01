@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 class Validator {
   constructor() {
     this.name_re = /[A-Za-z]{2,25}/;
@@ -35,6 +37,16 @@ class Validator {
       throw "Invalid Age";
     }
     return value;
+  }
+  birthDate(value) {
+    if (
+      value === null ||
+      value.isBefore(dayjs("1920-01-01")) ||
+      value.isAfter(dayjs)
+    ) {
+      throw "Invalid Birth Date";
+    }
+    return value.format("DD-MM-YYYY");
   }
 }
 

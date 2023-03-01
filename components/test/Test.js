@@ -1,12 +1,13 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import styles from "../../styles/TestPage.module.scss";
 // import Dropzone from "react-dropzone";
+import axios from "axios";
 
 import { useDropzone } from "react-dropzone";
 import CardMedia from "@mui/material/CardMedia";
 import { styled } from "@mui/material/styles";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
 
 const baseStyle = {
   flexBasis: "60%",
@@ -37,7 +38,8 @@ const rejectStyle = {
   borderColor: "#1976d2",
 };
 
-const test = () => {
+export default function Test() {
+  const [disabled, setDisabled] = useState(false);
   const {
     getRootProps,
     getInputProps,
@@ -45,10 +47,14 @@ const test = () => {
     isDragAccept,
     isDragReject,
     acceptedFiles,
-  } = useDropzone({ accept: { "image/*": [] } });
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>{file.path}</li>
-  ));
+  } = useDropzone({
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+    },
+    maxFiles: 1,
+  });
 
   const style = useMemo(
     () => ({
@@ -60,52 +66,119 @@ const test = () => {
     [isFocused, isDragAccept, isDragReject]
   );
 
+  console.log(acceptedFiles);
+  const file = acceptedFiles.length == 0 ? null : acceptedFiles[0];
+
+  async function handleUpload() {
+    setDisabled(true);
+    // return console.log("uploading");
+    let token = (document.cookie.match(
+      /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
+    ) || [, null])[1];
+
+    if (acceptedFiles.length == 0) {
+      alert("Please select a file to upload");
+      setDisabled(false);
+      return;
+    }
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      let response = await axios.post(
+        "http://localhost:5000/detect",
+        formData,
+        {
+          headers: {
+            token,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response);
+      alert(response.data.data);
+    } catch {
+      alert("Something went wrong");
+    } finally {
+      setDisabled(false);
+    }
+  }
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.row1}>
-          <div className={styles.innerContainer} {...getRootProps({ style })}>
-            <input {...getInputProps()} />
-            <CardMedia
-              className={styles.cardMedia}
-              sx={{ width: 50, height: 50 }}
-              image="/assets/test/test_x_ray_medical.png"
-              title="doctor_test"
-            />
-            <UploadButton variant="contained"> Upload File </UploadButton>
-            <p>or Drop Your Files</p>
-          </div>
+          {disabled ? (
+            <div className={styles.innerContainer} style={style}>
+              {UploadArea(getInputProps, disabled, file)}
+            </div>
+          ) : (
+            <div className={styles.innerContainer} {...getRootProps({ style })}>
+              {UploadArea(getInputProps, disabled, file)}
+            </div>
+          )}
           <div>
             <CardMedia
               className={`${styles.cardMedia} ${styles.docImage}`}
-              sx={{ width: 200, height: "100%" }}
+              sx={{ width: 300, height: "100%" }}
               image="/assets/test/test_Doctor.png"
               title="doctor_test"
             />
-
-            <TestButton> Test Now</TestButton>
+            <TestButton onClick={handleUpload} disabled={disabled}>
+              {disabled ? "Testing..." : "Test"}
+            </TestButton>
           </div>
         </div>
-        <div className={style.row2}></div>
+        {/* <div className={style.row2}></div> */}
       </div>
     </>
   );
-};
+}
+
+function UploadArea(getInputProps, disabled, file) {
+  return (
+    <>
+      {disabled ? <></> : <input {...getInputProps()} />}
+      <CardMedia
+        className={styles.cardMedia}
+        sx={{ width: 80, height: 80 }}
+        image="/assets/test/test_x_ray_medical.png"
+        title="doctor_test"
+      />
+      <UploadButton variant="contained" disabled={disabled}>
+        Upload File
+      </UploadButton>
+      <p style={{ fontSize: "18px" }}>or Drop Your Files</p>
+      {file ? (
+        <p style={{ fontSize: "14px", margin: 0, color: "black" }}>
+          Selected File: {file.path}
+        </p>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+}
 
 const UploadButton = styled(Button)(() => ({
-  width: "200px",
-  height: "23px",
-  fontSize: "10px",
-  backgroundColor: "#4B56D2",
+  width: "250px",
+  height: "50px",
+  fontSize: "20px",
+  backgroundColor: "#1976d2",
   color: "white",
 }));
 
 const TestButton = styled(Button)(() => ({
-  width: "200px",
-  height: "23px",
-  fontSize: "10px",
-  backgroundColor: "#4B56D2",
+  width: "100%",
+  height: "50px",
+  fontSize: "16px",
+  marginTop: "10px",
+  backgroundColor: "#1976d2",
   color: "white",
+
+  "&:hover": {
+    color: "white",
+    backgroundColor: "#1976d2",
+  },
 }));
 
-export default test;
+// export default test;

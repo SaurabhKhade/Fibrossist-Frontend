@@ -1,26 +1,31 @@
 @import "./colors";
-.container{
-    width: 100%;
-    margin: auto auto;
-    // display: flex;
-    // justify-content: center;
 
-}
-
-.innerContainer{
-    border: 12px solid blue;
-}
-.cardMedia{
-    
-}
-.docImage{
-    border: 12px solid $primary;
+.container {
+  //   height: 300px;
+  width: 100%;
+  margin: auto auto;
+  // display: flex;
+  // justify-content: center;
 }
 
-.row1{
-    display: flex;
-    justify-content: center;
+.innerContainer {
+  border: 12px solid $primary !important;
+  border-right: 6px;
+  height: 300px;
+  display: flex;
+  align-items: center;
 }
-.row2{
-    display: flex;
+.docImage {
+  border: 12px solid $primary;
+  border-left: 6px;
+}
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  //   align-items: centers;
+  //   border: 1px solid red;
+}
+.row2 {
+  display: flex;
 }

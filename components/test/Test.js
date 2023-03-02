@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import styles from "../../styles/TestPage.module.scss";
 // import Dropzone from "react-dropzone";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 import { useDropzone } from "react-dropzone";
 import CardMedia from "@mui/material/CardMedia";
@@ -39,6 +40,7 @@ const rejectStyle = {
 };
 
 export default function Test() {
+  const router = useRouter();
   const [disabled, setDisabled] = useState(false);
   const {
     getRootProps,
@@ -94,10 +96,15 @@ export default function Test() {
           },
         }
       );
-      console.log(response);
-      alert(response.data.data);
-    } catch {
-      alert("Something went wrong");
+      // console.log(response);
+      // alert(response.data.data);
+      router.push(`/dashboard/result?history=${response.data.history}`);
+    } catch (e) {
+      if (e.response) {
+        alert(e.response.data.message);
+      } else {
+        alert("Something went wrong");
+      }
     } finally {
       setDisabled(false);
     }

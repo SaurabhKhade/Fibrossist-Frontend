@@ -2,10 +2,14 @@ import styles from "../styles/Home.module.scss";
 import FirstView from "../components/landingPage/FirstView";
 import LaterView from "../components/landingPage/LaterView";
 import Reviews from "../components/landingPage/Reviews";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Head>
+        <title>fibrossist</title>
+      </Head>
       <FirstView />
       {LaterViewData.map((item, i) => (
         <LaterView {...item} key={i} />

@@ -11,9 +11,9 @@ import Link from "next/link";
 const pages = [
   { name: "Home", path: "/dashboard/" },
   { name: "History", path: "/dashboard/history" },
-  { name: "Contact Us", path: "/dashboard/#contact" },
-  { name: "About Us", path: "/dashboard/about" },
-  { name: "Settings", path: "/dashboard/settings" },
+  // { name: "Contact Us", path: "/dashboard/#contact" },
+  // { name: "About Us", path: "/dashboard/about" },
+  // { name: "Settings", path: "/dashboard/settings" },
 ];
 
 export function PageListSmallScreen({

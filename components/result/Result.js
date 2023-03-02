@@ -15,6 +15,7 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Head from "next/head";
 
 export default function Result() {
   const router = useRouter();
@@ -42,6 +43,11 @@ export default function Result() {
     <div className={styles.container}>
       {data ? (
         <Card className={styles.card}>
+          <Head>
+            <title>
+              You have been tested {data.isNormal ? "Negative" : "Positive"}
+            </title>
+          </Head>
           <CardContent>
             <Typography
               gutterBottom

@@ -1,122 +1,43 @@
-// import React, { useMemo, useState } from "react";
-import * as React from 'react';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../../styles/HistoryPage.module.scss";
-import HistoryCard from "./HistoryCard"
+import HistoryCard from "./HistoryCard";
 // import Dropzone from "react-dropzone";
 import axios from "axios";
+import { useRouter } from "next/router";
 
+export default function History() {
+  const [data, setData] = useState([]);
 
-
-
-
-
-
-
-
-
-const history = () => {
-   const data = [
-      {
-            sr_no : 1,
-            age : "22 years",
-            image : "/assets/test/test_Doctor.png",
-            result : "Positive",
-            date : "22-02-2023",
-            time : "12:00 AM"
+  useEffect(() => {
+    let token = (document.cookie.match(
+      /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
+    ) || [, null])[1];
+    async function apiCall() {
+      try {
+        let { data } = await axios.get("http://localhost:5000/history", {
+          headers: {
+            token,
           },
-      {
-     sr_no : 2,
-     age : "22 years",
-     image : "/assets/test/test_Doctor.png",
-     result : "Positive",
-     date : "22-02-2023",
-     time : "12:00 AM"
-   },
-   {
-      sr_no : 3,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 4,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 5,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 6,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 7,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 8,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 9,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
-    },
-    {
-      sr_no : 10,
-      age : "22 years",
-      image : "/assets/test/test_Doctor.png",
-      result : "Positive",
-      date : "22-02-2023",
-      time : "12:00 AM"
+        });
+        setData(data);
+      } catch (e) {
+        console.log(e);
+      }
     }
+    apiCall();
+  }, []);
 
-
-]
-
-
-
- return(
-       <>
-          <div className={styles.container}>
-            {data.map((element) => (
-                  // {console.log(element)}
-                  <div className={styles.cardsContainer}>
-                  <HistoryCard element={element}/>
-                  </div>
-            ))}
+  return (
+    <>
+      <div className={styles.container}>
+        {data.map((element, i) => (
+          // {console.log(element)}
+          <div className={styles.cardsContainer} key={i}>
+            <HistoryCard element={element} index={i} />
           </div>
-       </>
- );
-
-      
-
+        ))}
+      </div>
+    </>
+  );
 }
-export default history;

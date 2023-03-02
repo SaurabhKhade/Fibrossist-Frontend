@@ -23,6 +23,7 @@ import Alert from "../components/auth/Alert";
 import TextField from "../components/auth/TextField";
 import Select from "../components/auth/Select";
 import SWAL from "../components/auth/SWAL";
+import Head from "next/head";
 
 const theme = createTheme();
 
@@ -82,6 +83,9 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>SignUp</title>
+      </Head>
       <Container component="main" maxWidth="xs">
         <Alert open={errorOpen} message={errorMessage} setOpen={setErrorOpen} />
         <CssBaseline />

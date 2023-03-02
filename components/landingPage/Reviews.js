@@ -4,12 +4,12 @@ import Review from "./Review";
 import Slider from "./Slider";
 
 export default function Reviews() {
-  const [loadedPair, setLoadedPair] = useState(1);
+  const [loadedPair, setLoadedPair] = useState(0);
 
   function getReviews() {
     const reviews = [];
-    reviews.push(<Review {...data[loadedPair * 2]} />);
-    reviews.push(<Review {...data[loadedPair * 2 + 1]} />);
+    reviews.push(<Review {...data[loadedPair * 2]} key="first" />);
+    reviews.push(<Review {...data[loadedPair * 2 + 1]} key="second" />);
     return reviews;
   }
 

@@ -68,7 +68,7 @@ export default function Test() {
     [isFocused, isDragAccept, isDragReject]
   );
 
-  console.log(acceptedFiles);
+  // console.log(acceptedFiles);
   const file = acceptedFiles.length == 0 ? null : acceptedFiles[0];
 
   async function handleUpload() {

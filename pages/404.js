@@ -14,6 +14,7 @@ export default function PageNotFound() {
         />
         {/*eslint-disable-next-line @next/next/no-css-tags*/}
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
+        <title>Page Not Found</title>
       </Head>
       <div id="board" className="container">
         <div className="copy border">

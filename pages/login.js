@@ -17,6 +17,7 @@ import Copyright from "../components/auth/Copyright";
 import axios from "axios";
 import SWAL from "../components/auth/SWAL";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const theme = createTheme();
 
@@ -56,6 +57,9 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Login</title>
+      </Head>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

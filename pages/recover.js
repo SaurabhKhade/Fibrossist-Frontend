@@ -19,6 +19,7 @@ import SWAL from "../components/auth/SWAL";
 import { useRouter } from "next/router";
 import Email from "../components/recover/Email";
 import Password from "../components/recover/Password";
+import Head from "next/head";
 
 const theme = createTheme();
 
@@ -81,6 +82,9 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Recover Account</title>
+      </Head>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

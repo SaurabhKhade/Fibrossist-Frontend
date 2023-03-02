@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    max-width: 1600px;
+    padding: 10px;
+    gap: 10px;
+    display: grid;
+    //  flex-wrap: wrap;
+    //  justify-content: center;
+    //  border: 1px solid red;
+     grid-template-columns: repeat(4,1fr);
+    }
+    
+    .cardsContainer{
+    // border: 1px solid red;
+    // flex: 20%;
+    // height: 200px;
+   width:100%;
+//    max-width:20%;
+//    margin: 10px;
+   padding: 10px;
+   box-shadow: 0 0 0 ;
+ 
+}

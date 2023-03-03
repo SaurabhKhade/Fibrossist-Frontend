@@ -1,35 +1,20 @@
-const codeStore = "fibrossist-codes-cache-v5";
-const assetsStore = "fibrossist-assets-cache-v4";
-const staticStore = "fibrossist-static-cache-v4";
+const store = "fibrossist-cache-v1";
 
-const assets = [];
-const codes = [];
-const statics = [];
-
-const allCacheStores = [
-  {
-    name: codeStore,
-    links: codes,
-  },
-  {
-    name: assetsStore,
-    links: assets,
-  },
-  {
-    name: staticStore,
-    links: statics,
-  },
+const precaches = [
+  "/",
+  "http://localhost:3000/assets/misc/firstView.png",
+  "http://localhost:3000/assets/misc/secondView.png",
+  "http://localhost:3000/assets/misc/thirdView.png",
+  "http://localhost:3000/_next/static/chunks/framework-7751730b10fa0f74.js",
+  "http://localhost:3000/_next/static/chunks/pages/_app-2c350274ba9b048d.js",
+  "http://localhost:3000/_next/static/chunks/main-591bb7ec51acdc0d.js",
 ];
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    Promise.all(
-      allCacheStores.map((cacheStore) => {
-        return caches.open(cacheStore.name).then((cache) => {
-          return cache.addAll(cacheStore.links);
-        });
-      })
-    )
+self.addEventListener("install", (installEvent) => {
+  installEvent.waitUntil(
+    caches.open(store).then((cache) => {
+      cache.addAll(precaches);
+    })
   );
 });
 
@@ -46,26 +31,9 @@ self.addEventListener("fetch", (event) => {
         }
         let responseToCache = response.clone();
 
-        if (
-          event.request.url.includes(".js") ||
-          event.request.url.includes(".css")
-        ) {
-          caches.open(codeStore).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-        } else if (
-          event.request.url.includes(".woff") ||
-          event.request.url.includes(".woff2") ||
-          event.request.url.includes("/assets/")
-        ) {
-          caches.open(staticStore).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-        } else {
-          caches.open(assetsStore).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-        }
+        caches.open(store).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
 
         return response;
       });
@@ -74,7 +42,7 @@ self.addEventListener("fetch", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  let whitelist = [codeStore, assetsStore, staticStore];
+  let whitelist = [store];
 
   event.waitUntil(
     caches.keys().then((cacheNames) => {

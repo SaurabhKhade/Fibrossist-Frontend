@@ -26,23 +26,25 @@ export function PageListSmallScreen({
       <MedicalServicesIcon
         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
       />
-      <Typography
-        variant="h5"
-        noWrap
-        component="a"
-        href="/"
-        sx={{
-          mr: 2,
-          display: { xs: "none", md: "flex" },
-          fontWeight: 600,
-          letterSpacing: ".3rem",
-          color: "inherit",
-          textDecoration: "none",
-        }}
-        className="poppins"
-      >
-        Fibrossist
-      </Typography>
+      <Link href="/">
+        <Typography
+          variant="h5"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            mr: 2,
+            display: { xs: "none", md: "flex" },
+            fontWeight: 600,
+            letterSpacing: ".3rem",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+          className="poppins"
+        >
+          Fibrossist
+        </Typography>
+      </Link>
 
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <IconButton
@@ -98,25 +100,27 @@ export function PageList() {
       <MedicalServicesIcon
         sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
       />
-      <Typography
-        variant="h5"
-        noWrap
-        component="a"
-        href=""
-        sx={{
-          mr: 2,
-          display: { xs: "flex", md: "none" },
-          flexGrow: 1,
-          fontFamily: "'Exo', sans-serif",
-          fontWeight: 600,
-          letterSpacing: ".3rem",
-          color: "inherit",
-          textDecoration: "none",
-        }}
-        className="poppins"
-      >
-        Fibrossist
-      </Typography>
+      <Link href="/">
+        <Typography
+          variant="h5"
+          noWrap
+          component="a"
+          href="/"
+          sx={{
+            mr: 2,
+            display: { xs: "flex", md: "none" },
+            flexGrow: 1,
+            fontFamily: "'Exo', sans-serif",
+            fontWeight: 600,
+            letterSpacing: ".3rem",
+            color: "inherit",
+            textDecoration: "none",
+          }}
+          className="poppins"
+        >
+          Fibrossist
+        </Typography>
+      </Link>
       {router.pathname !== "/" && (
         <Box
           sx={{

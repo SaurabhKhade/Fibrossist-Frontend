@@ -28,6 +28,11 @@
       "src": "/assets/icon/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/assets/icon/maskable_icon.png",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

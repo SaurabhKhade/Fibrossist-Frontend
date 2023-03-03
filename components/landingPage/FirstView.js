@@ -1,7 +1,7 @@
 import styles from "../../styles/Home.module.scss";
 import Image from "next/image";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 
 export default function FirstView() {
@@ -47,8 +47,8 @@ export default function FirstView() {
           <Image
             src="/assets/misc/firstView.png"
             alt=""
-            width={600}
-            height={350}
+            width={608}
+            height={360}
           />
         </div>
       </div>

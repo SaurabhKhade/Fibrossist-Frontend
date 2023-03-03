@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head />
-      {/* <Script src="/js/sw.installer.js" /> */}
+      <Script src="/js/sw.installer.js" />
       {router.pathname !== "/login" &&
         router.pathname !== "/signup" &&
         router.pathname !== "/recover" && <Header />}

@@ -14,7 +14,11 @@ export default function UserCard({ data }) {
             backgroundColor: "#37c9d0",
           }}
           alt={data.details.name + " " + data.details.surname}
-          src={data.profile.exists ? data.profile.path : ""}
+          src={
+            data.profile.exists
+              ? `http://localhost:5000/${data.profile.path}`
+              : ""
+          }
         />
       </div>
       <h1 className={styles.boldText}>

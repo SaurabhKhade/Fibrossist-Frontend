@@ -40,7 +40,9 @@ export default function FirstView() {
           </div>
 
           <div>
-            <ExploreButton variant="contained">Explore More</ExploreButton>
+            <a href="#view-0">
+              <ExploreButton variant="contained">Explore More</ExploreButton>
+            </a>
           </div>
         </div>
         <div>

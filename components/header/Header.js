@@ -62,7 +62,7 @@ export default function NavigationBar() {
             token,
           },
         });
-        // console.log(data );
+        console.log(data);
         setData(data);
       } catch {
         router.replace("/login");

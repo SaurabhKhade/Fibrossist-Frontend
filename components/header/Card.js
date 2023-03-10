@@ -43,7 +43,11 @@ export default function Card({
               <Avatar
                 variant="circle"
                 alt={data.details.name + " " + data.details.surname}
-                src={data.profile.exists ? data.profile.path : ""}
+                src={
+                  data.profile.exists
+                    ? `http://localhost:5000/${data.profile.path}`
+                    : ""
+                }
                 sx={{
                   backgroundColor: "#002D62",
                   border: "2px solid #fff",

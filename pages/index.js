@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <FirstView />
       {LaterViewData.map((item, i) => (
-        <LaterView {...item} key={i} />
+        <LaterView {...item} key={i} index={i} />
       ))}
       <Reviews />
     </div>

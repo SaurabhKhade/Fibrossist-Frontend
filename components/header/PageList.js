@@ -8,12 +8,16 @@ import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+const pointer = {
+  cursor: "pointer",
+};
+
 const pages = [
   { name: "Home", path: "/dashboard/" },
   { name: "History", path: "/dashboard/history" },
   // { name: "Contact Us", path: "/dashboard/#contact" },
   // { name: "About Us", path: "/dashboard/about" },
-  // { name: "Settings", path: "/dashboard/settings" },
+  { name: "Settings", path: "/dashboard/settings" },
 ];
 
 export function PageListSmallScreen({
@@ -135,12 +139,12 @@ export function PageList() {
           }}
         >
           {pages.map((page, i) => (
-            <Link
-              key={page + i.toString() + "-big"}
-              href={page.path}
-              style={{ cursor: "pointer" }}
-            >
-              <Typography textAlign="center" className="poppins">
+            <Link key={page + i.toString() + "-big"} href={page.path}>
+              <Typography
+                textAlign="center"
+                className="poppins"
+                style={pointer}
+              >
                 {page.name}
               </Typography>
             </Link>

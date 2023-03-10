@@ -3,6 +3,7 @@ import styles from "../styles/Footer.module.scss";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
+import SWAL from "../components/auth/SWAL";
 
 // import PersonIcon from "@mui/icons-material/Person";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -10,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
+import axios from "axios";
+import { useState } from "react";
 
 export default function Footer() {
   return (
@@ -59,10 +62,43 @@ function Left() {
 }
 
 function Right() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    contact: "",
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log(data);
+    let token = (document.cookie.match(
+      /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
+    ) || [, null])[1];
+
+    try {
+      await axios({
+        method: "post",
+        url: "http://localhost:5000/contact",
+        headers: {
+          "Content-Type": "application/json",
+          token,
+        },
+        data,
+      });
+      SWAL(
+        "Your Contact has been saved!",
+        "We will get back to you soon.",
+        "success"
+      );
+    } catch (error) {
+      SWAL("Error", "Error occured while saving details!", "error");
+    }
+  }
+
   return (
     <div className={styles.right}>
       <p className={styles.title}>Request For Callback</p>
-      <div className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.label}>
           <PersonOutlineOutlinedIcon sx={{ color: "white" }} />
           <p>Full Name</p>
@@ -74,7 +110,12 @@ function Right() {
               height: "15px",
             },
           }}
+          required
           placeholder="Enter your name here"
+          value={data.name}
+          onChange={(e) =>
+            setData((data) => ({ ...data, name: e.target.value }))
+          }
         />
         <div className={styles.label}>
           <EmailOutlinedIcon sx={{ color: "white" }} />
@@ -82,12 +123,18 @@ function Right() {
         </div>
         <InputField
           variant="outlined"
+          required
           inputProps={{
             style: {
               height: "15px",
             },
+            type: "email",
           }}
           placeholder="Enter your email here"
+          value={data.email}
+          onChange={(e) =>
+            setData((data) => ({ ...data, email: e.target.value }))
+          }
         />
         <div className={styles.label}>
           <CallIcon sx={{ color: "white" }} />
@@ -98,17 +145,25 @@ function Right() {
             style: {
               height: "15px",
             },
+            type: "tel",
+            pattern: "[0-9]{10}",
           }}
+          required
           variant="outlined"
-          placeholder="Enter your contact here"
+          placeholder="10 digit contact number"
+          value={data.contact}
+          onChange={(e) =>
+            setData((data) => ({ ...data, contact: e.target.value }))
+          }
         />
         <SubmitButton
           variant="contained"
           //   sx={{ width: "100px", marginLeft: "auto", marginTop: "15px" }}
+          type="submit"
         >
-          send
+          Send
         </SubmitButton>
-      </div>
+      </form>
     </div>
   );
 }

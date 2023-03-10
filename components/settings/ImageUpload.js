@@ -3,12 +3,14 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function ImageUpload({ src }) {
   const [isChanged, setIsChanged] = useState(false);
   const [imgSrc, setImgSrc] = useState(null);
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  const router = useRouter();
   // console.log("sec", imgSrc);
 
   function handleChange(e) {
@@ -33,6 +35,8 @@ export default function ImageUpload({ src }) {
       /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
     ) || [, null])[1];
 
+    if (!token) return router.push("/login");
+
     try {
       await axios.post(
         "http://localhost:5000/settings/update_profile",
@@ -44,6 +48,7 @@ export default function ImageUpload({ src }) {
           },
         }
       );
+      alert("Profile picture updated");
       window.location.reload();
       // console.log(response.data);
     } catch {

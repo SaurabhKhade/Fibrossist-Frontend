@@ -1,9 +1,14 @@
 .settings {
   // border: 1px solid red;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.imageUpload {
+.imageUpload,
+.updateName,
+.updateBirthday {
   //   border: 1px solid gray;
   border-radius: 5px;
   box-shadow: 1px 2px 3px gray;
@@ -40,4 +45,11 @@
 .btn {
   display: flex;
   justify-content: center;
+}
+
+.updateName,
+.updateBirthday {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

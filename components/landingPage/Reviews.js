@@ -34,41 +34,38 @@ const data = [
     name: "Amol Khairwad",
     age: "22",
     review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+      "Fibrossist did a great job with my first ever health test. This provide better test results. Great Platform. Easy to use. One can really trust this platform.",
   },
   {
     id: "uid2",
     name: "Kunal Kalebag",
     age: "27",
     review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+      "Easy health checkup. I got my health checkup done in just 5 minutes. I got my results in just 2 minutes. I am very happy with the quick results.",
   },
   {
     id: "uid3",
     name: "Omkar Shirote",
     age: "21",
     review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+      "The platform is really cool. Really needed this kind of platform. Do check it out. ",
   },
   {
     id: "uid4",
     name: "Rushikesh Barsing",
     age: "25",
-    review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+    review: "GREAT PLATFORM. Better to use.",
   },
   {
     id: "uid5",
     name: "Malhar Dhaygude",
     age: "27",
-    review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+    review: "Nice platform, really helped me out.",
   },
   {
     id: "uid6",
     name: "Saurabh Khade",
     age: "23",
-    review:
-      "Fibrossist did a great job with my first ever health exam. this platform explained everything to me in a very clear manner. great accuracy as compared to others.",
+    review: "Good to go with.",
   },
 ];

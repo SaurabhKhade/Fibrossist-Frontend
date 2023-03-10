@@ -3,8 +3,22 @@ import Image from "next/image";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
+// import SignIn from "../../pages/login";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function FirstView() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    let token = (document.cookie.match(
+      /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
+    ) || [, null])[1];
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <div className={styles.firstView}>
       <div>
@@ -23,7 +37,7 @@ export default function FirstView() {
               <p>
                 <CheckCircleRoundedIcon sx={{ fontSize: 26 }} />
               </p>
-              <p>Disease detection based on X-ray</p>
+              <p>Disease Detection Based on X-ray</p>
             </div>
             <div className={styles.item}>
               <p>
@@ -40,9 +54,9 @@ export default function FirstView() {
           </div>
 
           <div>
-            <a href="#view-0">
-              <ExploreButton variant="contained">Explore More</ExploreButton>
-            </a>
+            <Link href={isLoggedIn ? "/dashboard" : "/login"}>
+              <ExploreButton variant="contained">Start Using</ExploreButton>
+            </Link>
           </div>
         </div>
         <div>

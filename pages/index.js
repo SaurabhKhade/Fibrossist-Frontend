@@ -24,12 +24,12 @@ const LaterViewData = [
     className: styles.secondView,
     imgPath: "/assets/misc/secondView.png",
     title: "What is Fibrosis?",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+    text: "Pulmonary fibrosis is a group of serious lung diseases that affect the respiratory system. Pulmonary fibrosis scars and thickens lung tissue. It impacts the connecting tissue in the lung and the alveoli (air sacs inside the lungs).The lung damage gradually gets worse over time. Hard, stiff lung tissues don’t expand as well as they should, making it harder to breathe. Pulmonary fibrosis may cause shortness of breath when you do routine tasks that never seemed tiring before.",
   },
   {
     className: styles.thirdView,
     imgPath: "/assets/misc/thirdView.png",
-    title: "What do you expect from our platform?",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+    title: "What You Will Get From Our Platform?",
+    text: "The platform is based on deep learning algorithms that can detect the presence of fibrosis in the lungs. The lung x-ray image is taken as an input and the output is the presence of fibrosis or not. The platform is designed to be user-friendly and easy to use. The platform is also designed to be scalable and can be used by doctors and patients alike. hence, the platform can be used by doctors to detect the presence of fibrosis in the lungs and can be used by patients to check the presence of fibrosis in their lungs. The platform provides user login, signup with authentication.",
   },
 ];

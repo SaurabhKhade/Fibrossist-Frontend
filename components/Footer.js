@@ -50,7 +50,7 @@ function Left() {
         <div className={styles.innerRight}>
           <p className={styles.title}>Quick Contact</p>
           <div>
-            <CallIcon sx={{ color: "white" }} /> <p>+91 9876543210</p>
+            <CallIcon sx={{ color: "white" }} /> <p>+91 7620623279</p>
           </div>
           <div>
             <EmailIcon sx={{ color: "white" }} /> <p>fibrossist@gmail.com</p>

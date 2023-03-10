@@ -8,7 +8,7 @@ export default function HeadComponent() {
         content="An AI based Fibrossist Detection System using the X-Ray scanned copy."
       />
       <meta charSet="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="apple-mobile-web-app-status-bar" content="#1976d2" />

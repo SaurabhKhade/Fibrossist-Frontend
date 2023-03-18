@@ -18,6 +18,7 @@ import axios from "axios";
 import SWAL from "../components/auth/SWAL";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import getHost from "../host";
 
 const theme = createTheme();
 
@@ -36,7 +37,7 @@ export default function SignIn() {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/signin",
+        url: `${getHost()}/signin`,
         data,
       });
       SWAL("Success", response.data.message, "success", () => {
@@ -48,8 +49,8 @@ export default function SignIn() {
         router.push("/dashboard");
       });
     } catch (error) {
+      // console.log(error);
       SWAL("Error", error.response.data.message, "error");
-      //   console.log(error);
     } finally {
       setDisabled(false);
     }

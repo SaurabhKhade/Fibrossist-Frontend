@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
+import getHost from "../../host";
 
 export default function ImageUpload({ src }) {
   const [isChanged, setIsChanged] = useState(false);
@@ -38,16 +39,12 @@ export default function ImageUpload({ src }) {
     if (!token) return router.push("/login");
 
     try {
-      await axios.post(
-        "http://localhost:5000/settings/update_profile",
-        formData,
-        {
-          headers: {
-            token,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      await axios.post(`${getHost()}/settings/update_profile`, formData, {
+        headers: {
+          token,
+          "Content-Type": "multipart/form-data",
+        },
+      });
       alert("Profile picture updated");
       window.location.reload();
       // console.log(response.data);

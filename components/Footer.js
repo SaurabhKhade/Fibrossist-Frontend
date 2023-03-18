@@ -4,6 +4,7 @@ import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 import SWAL from "../components/auth/SWAL";
+import getHost from "../host";
 
 // import PersonIcon from "@mui/icons-material/Person";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -70,7 +71,7 @@ function Right() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     let token = (document.cookie.match(
       /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
     ) || [, null])[1];
@@ -78,7 +79,7 @@ function Right() {
     try {
       await axios({
         method: "post",
-        url: "http://localhost:5000/contact",
+        url: `${getHost()}/contact`,
         headers: {
           "Content-Type": "application/json",
           token,

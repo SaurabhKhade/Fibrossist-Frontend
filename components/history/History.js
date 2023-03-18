@@ -5,6 +5,7 @@ import HistoryCard from "./HistoryCard";
 // import Dropzone from "react-dropzone";
 import axios from "axios";
 import { useRouter } from "next/router";
+import getHost from "../../host";
 
 export default function History() {
   const [data, setData] = useState([]);
@@ -15,7 +16,7 @@ export default function History() {
     ) || [, null])[1];
     async function apiCall() {
       try {
-        let { data } = await axios.get("http://localhost:5000/history", {
+        let { data } = await axios.get(`${getHost()}/history`, {
           headers: {
             token,
           },

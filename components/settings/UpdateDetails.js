@@ -7,6 +7,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import styles from "../../styles/settings.module.scss";
 import axios from "axios";
 import { useRouter } from "next/router";
+import getHost from "../../host";
 
 export default function UpdateDetails({ oldName, oldSurname, oldBirthDate }) {
   const [name, setName] = useState(oldName);
@@ -30,7 +31,7 @@ export default function UpdateDetails({ oldName, oldSurname, oldBirthDate }) {
 
     try {
       await axios.post(
-        "http://localhost:5000/settings/update_details",
+        `${getHost()}/settings/update_details`,
         {
           name,
           surname,
@@ -45,7 +46,7 @@ export default function UpdateDetails({ oldName, oldSurname, oldBirthDate }) {
       alert("Details updated");
       window.location.reload();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       alert("Something went wrong");
     }
   }

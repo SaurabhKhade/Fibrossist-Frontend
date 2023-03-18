@@ -24,6 +24,7 @@ import TextField from "../components/auth/TextField";
 import Select from "../components/auth/Select";
 import SWAL from "../components/auth/SWAL";
 import Head from "next/head";
+import getHost from "../host";
 
 const theme = createTheme();
 
@@ -58,7 +59,7 @@ export default function SignUp() {
       try {
         const response = await axios({
           method: "post",
-          url: "http://localhost:5000/signup",
+          url: `${getHost()}/signup`,
           data,
         });
         // console.log(response.data.message);

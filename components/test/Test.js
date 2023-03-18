@@ -9,6 +9,7 @@ import { useDropzone } from "react-dropzone";
 import CardMedia from "@mui/material/CardMedia";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import getHost from "../../host";
 
 const baseStyle = {
   flexBasis: "60%",
@@ -86,16 +87,12 @@ export default function Test() {
     const formData = new FormData();
     formData.append("image", file);
     try {
-      let response = await axios.post(
-        "http://localhost:5000/detect",
-        formData,
-        {
-          headers: {
-            token,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      let response = await axios.post(`${getHost()}/detect`, formData, {
+        headers: {
+          token,
+          "Content-Type": "multipart/form-data",
+        },
+      });
       // console.log(response);
       // alert(response.data.data);
       router.push(`/dashboard/result?history=${response.data.history}`);

@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 import Email from "../components/recover/Email";
 import Password from "../components/recover/Password";
 import Head from "next/head";
+import getHost from "../host";
 
 const theme = createTheme();
 
@@ -37,10 +38,10 @@ export default function SignIn() {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:5000/recover/send_otp",
+        url: `${getHost()}/recover/send_otp`,
         data: { email },
       });
-      console.log(response);
+      // console.log(response);
       SWAL(
         "Success",
         "We have sent you an OTP to your email. Please check your email and verify your account.",
@@ -57,12 +58,12 @@ export default function SignIn() {
   }
 
   async function finalSubmit(data) {
-    console.log({ email, ...data });
+    // console.log({ email, ...data });
     setPasswordDisabled(true);
     try {
-      const response = await axios({
+      await axios({
         method: "post",
-        url: "http://localhost:5000/recover/verify_otp",
+        url: `${getHost()}/recover/verify_otp`,
         data: { email, ...data },
       });
       SWAL(

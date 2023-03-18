@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import styles from "../../styles/UserCard.module.scss";
+import getHost from "../../host";
 
 export default function UserCard({ data }) {
   return (
@@ -14,11 +15,7 @@ export default function UserCard({ data }) {
             backgroundColor: "#37c9d0",
           }}
           alt={data.details.name + " " + data.details.surname}
-          src={
-            data.profile.exists
-              ? `http://localhost:5000/${data.profile.path}`
-              : ""
-          }
+          src={data.profile.exists ? `${getHost()}/${data.profile.path}` : ""}
         />
       </div>
       <h1 className={styles.boldText}>

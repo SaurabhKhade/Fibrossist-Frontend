@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 import UserAvatar from "./UserAvatar";
 import { PageListSmallScreen, PageList } from "./PageList";
+import getHost from "../../host";
 
 export default function NavigationBar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -57,7 +58,7 @@ export default function NavigationBar() {
     ) || [, null])[1];
     async function apiCall() {
       try {
-        let { data } = await axios.get("http://localhost:5000/details", {
+        let { data } = await axios.get(`${getHost()}/details`, {
           headers: {
             token,
           },

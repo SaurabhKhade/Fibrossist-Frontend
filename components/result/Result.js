@@ -16,6 +16,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Head from "next/head";
+import getHost from "../../host";
 
 export default function Result() {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function Result() {
       } else {
         async function fetchData() {
           const res = await axios.get(
-            `http://localhost:5000/history?id=${router.query.history}`
+            `${getHost()}/history?id=${router.query.history}`
           );
           // console.log(res.data);
           setData(res.data);

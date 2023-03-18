@@ -20,7 +20,7 @@ export default function RecoveryEmail({ handleSubmit, disabled }) {
       };
       handleSubmit(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       SWAL("Error", error, "error");
     }
   }

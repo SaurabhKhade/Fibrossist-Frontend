@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import UpdateDetails from "../../components/settings/UpdateDetails";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
+import getHost from "../../host";
 // import UpdateBirthday from "../../components/settings/UpdateBirthday";
 
 export default function Settings() {
@@ -28,19 +29,19 @@ export default function Settings() {
 
     async function ApiCall() {
       try {
-        let response = await axios.get("http://localhost:5000/details", {
+        let response = await axios.get(`${getHost()}/details`, {
           headers: {
             token,
           },
         });
         setData(response.data);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         alert("Something went wrong");
       }
     }
     ApiCall();
-  }, []);
+  }, [router]);
 
   function logout() {
     document.cookie = "token" + "=; expires=Thu, 01-Jan-70 00:00:01 GMT;";
@@ -51,7 +52,7 @@ export default function Settings() {
       <ImageUpload
         src={
           data.profile.exists
-            ? `http://localhost:5000/${data.profile.path}`
+            ? `${getHost()}/${data.profile.path}`
             : "/assets/misc/default-profile.jpeg"
         }
       />

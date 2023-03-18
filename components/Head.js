@@ -9,10 +9,7 @@ export default function HeadComponent() {
       />
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta
-        httpEquiv="Content-Security-Policy"
-        content="upgrade-insecure-requests"
-      />
+
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="manifest" href="/manifest.webmanifest" />
       <meta name="apple-mobile-web-app-status-bar" content="#1976d2" />

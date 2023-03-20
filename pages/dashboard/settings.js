@@ -6,6 +6,7 @@ import UpdateDetails from "../../components/settings/UpdateDetails";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import getHost from "../../host";
+import Head from "next/head";
 // import UpdateBirthday from "../../components/settings/UpdateBirthday";
 
 export default function Settings() {
@@ -49,6 +50,9 @@ export default function Settings() {
   }
   return (
     <div className={styles.settings}>
+      <Head>
+        <title>Account Settings</title>
+      </Head>
       <ImageUpload
         src={
           data.profile.exists

@@ -66,7 +66,8 @@ export default function NavigationBar() {
         console.log(data);
         setData(data);
       } catch {
-        router.replace("/login");
+        document.cookie = "token" + "=; expires=Thu, 01-Jan-70 00:00:01 GMT;";
+        setTimeout(() => router.push("/login"), 0);
       }
     }
 

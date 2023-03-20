@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
 import getHost from "../../host";
+import Image from "next/image";
 
 export default function ImageUpload({ src }) {
   const [isChanged, setIsChanged] = useState(false);
@@ -71,7 +72,7 @@ export default function ImageUpload({ src }) {
       <div className={styles.preview}>
         <div className={styles.imageCover}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={imgSrc ? imgSrc : src} alt="" />
+          <Image src={imgSrc ? imgSrc : src} alt="" width={200} height={200} />
         </div>
       </div>
       {isChanged && (

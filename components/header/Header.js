@@ -63,7 +63,7 @@ export default function NavigationBar() {
             token,
           },
         });
-        console.log(data);
+        // console.log(data);
         setData(data);
       } catch {
         document.cookie = "token" + "=; expires=Thu, 01-Jan-70 00:00:01 GMT;";

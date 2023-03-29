@@ -14,6 +14,12 @@ export default function History() {
     let token = (document.cookie.match(
       /^(?:.*;)?\s*token\s*=\s*([^;]+)(?:.*)?$/
     ) || [, null])[1];
+    if (!token) {
+      return (() => {
+        router.push("/login");
+      })();
+    }
+
     async function apiCall() {
       try {
         let { data } = await axios.get(`${getHost()}/history`, {
@@ -23,7 +29,8 @@ export default function History() {
         });
         setData(data);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        alert("Something went wrong");
       }
     }
     apiCall();

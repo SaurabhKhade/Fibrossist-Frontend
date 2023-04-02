@@ -44,7 +44,10 @@ export default function HeadComponent() {
       <meta name="robots" content="index, follow" />
 
       {/* Open Graph Meta Tags */}
-      <meta property="og:image" content="/assets/icon/icon-512x512.png" />
+      <meta
+        property="og:image"
+        content="https://fibrossist.vercel.app/assets/icon/icon-512x512.png"
+      />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content="Fibrossist Logo" />
       <meta property="og:type" content="Pulmonary Fibrosis Detection System" />

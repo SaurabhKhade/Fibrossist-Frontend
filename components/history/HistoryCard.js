@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import styles from "../../styles/CardHistory.module.scss";
+import getHost from "../../host.js";
 
 const HistoryCard = ({ element, index }) => {
   return (
@@ -17,7 +18,7 @@ const HistoryCard = ({ element, index }) => {
       <CardMedia
         component="img"
         height="194"
-        image={element.img_path}
+        image={`${getHost()}/${element.img_path}`}
         alt="X-ray"
       />
       <CardContent className={styles.CardContent}>

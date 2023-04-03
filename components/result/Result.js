@@ -64,7 +64,7 @@ export default function Result() {
             <CardMedia
               className={styles.cardMedia}
               sx={{ width: 50, height: 300 }}
-              image={data.img_path}
+              image={`${getHost()}/${data.img_path}`}
               title="X-ray image"
             />
             <CardContent className={styles.cardContent}>
